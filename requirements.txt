@@ -1,0 +1,10 @@
+environs==9.5.0
+Flask==2.2.2
+flask-marshmallow==0.14.0
+Flask-SQLAlchemy==3.0.2
+marshmallow==3.19.0
+marshmallow-sqlalchemy==0.28.1
+mysql==0.0.3
+python-dotenv==0.21.0
+SQLAlchemy==1.4.44
+Werkzeug==2.2.2
