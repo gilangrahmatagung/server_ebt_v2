@@ -1,0 +1,36 @@
+version: "3"
+
+volumes:
+  db_mysql:
+
+services:
+  api: 
+    build: .
+    command: /src/app.py
+    restart: always
+    volumes:
+      - .:/src
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+    environment:
+      - ENV=production
+      - SECRET_KEY=95532559ee170b2f0f6bf5b4fd6ecd6dede2192f1aee285d8b417c0b074d4e61
+      - DB_HOST=localhost
+      - DB_NAME=sensor_db
+      - DB_PORT=3306
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - SERVER_PORT=4000
+    
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sensor_db
+    volumes:
+      - db_mysql:/var/lib/mysql
+    ports:
+      - 3307:3306
